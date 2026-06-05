@@ -7,7 +7,7 @@ on:
         description: Target environment
         type: string
         required: true
-      runs-on:
+      runner:
         description: Runner to use
         type: string
         default: ubuntu-latest
@@ -18,7 +18,7 @@ on:
 
 jobs:
   build:
-    runs-on: ${{ inputs.runs-on }}
+    runs-on: ${{ inputs.runner }}
     outputs:
       artifact-name: ${{ steps.set-output.outputs.artifact-name }}
     steps:
