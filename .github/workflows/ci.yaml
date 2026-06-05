@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build-staging:
+    uses: ./.github/workflows/reusable-build.yaml
+    with:
+      environment: staging
+
+  build-production:
+    uses: ./.github/workflows/reusable-build.yaml
+    with:
+      environment: production
+
+  summary:
+    runs-on: ubuntu-latest
+    needs: [build-staging, build-production]
+    steps:
+      - run: |
+          echo "Staging artifact:    ${{ needs.build-staging.outputs.artifact-name }}"
+          echo "Production artifact: ${{ needs.build-production.outputs.artifact-name }}"
