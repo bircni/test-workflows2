@@ -1,0 +1,17 @@
+name: test
+
+on: push
+
+jobs:
+  my-test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Test"  >> $GITHUB_STEP_SUMMARY
+      - name: Adding markdown 
+        run: echo '### Hello world! 🚀' >> $GITHUB_STEP_SUMMARY
+  my-test2:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Test"
+      - name: Adding markdown
+        run: echo '### Welcome to Gitea Summaries! 🚀' >> $GITHUB_STEP_SUMMARY
