@@ -24,7 +24,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Build
-        run: echo "Building for environment: ${{ inputs.environment }}"
+        run: |
+          echo "Building for environment: ${{ inputs.environment }}"
       - name: Set output
         id: set-output
-        run: echo "artifact-name=build-${{ inputs.environment }}-${{ github.sha }}" >> "$GITHUB_OUTPUT"
+        run: |
+          echo "artifact-name=build-${{ inputs.environment }}-${{ github.sha }}" >> "$GITHUB_OUTPUT"
