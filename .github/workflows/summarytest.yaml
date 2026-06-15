@@ -1,6 +1,27 @@
 name: test
 
-on: push
+on:
+  workflow_dispatch:
+    inputs:
+      success:
+        description: "true=正常退出，false=错误退出"
+        required: true
+        default: "1"
+        type: choice
+        options:
+          - "1"
+          - "0"
+          - "true"
+          - "false"
+      environment:
+        description: 'Environment to deploy to'
+        required: true
+        default: 'staging'
+      enableFeatureX:
+        description: 'Enable feature X'
+        required: false
+        type: 'boolean'
+        default: false
 
 jobs:
   my-test:
